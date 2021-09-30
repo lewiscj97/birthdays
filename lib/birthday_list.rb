@@ -6,5 +6,7 @@ class BirthdayList
         @current_birthday = Birthday
     end
 
-    
+    def add_birthday(name, birthday)
+        @birthday_list << @current_birthday.new(name, birthday)
+    end
 end

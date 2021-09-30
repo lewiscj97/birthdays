@@ -1,0 +1,9 @@
+
+list = BirthdayList.new
+list.add_birthday('Lewis', '18/03')
+
+birthday = Birthday.new('Lewis', birthday)
+@list << birthday
+
+list.birthdays
+> Name: Lewis, Birthday: 18th March

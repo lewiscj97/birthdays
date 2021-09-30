@@ -1,9 +1,10 @@
 require 'birthday_list'
+require 'date'
 
 describe BirthdayList do
 
     let(:birthday) { double :birthday, name: 'Lewis', birthday: '18/03/1997' } 
-    let(:steve_birthday) { double :birthday, name: 'Steve', birthday: '10/04/2001' } 
+    let(:steve_birthday) { double :birthday, name: 'Steve', birthday: '30/09/2001'   } 
     let(:birthday_class) { double :birthday_class }
 
     before(:each) do
@@ -32,10 +33,20 @@ describe BirthdayList do
 
         it 'shows multiple birthdays in a tidy format' do
             @subject.add_birthday('Lewis', '18/03/1997')
-            allow(birthday_class).to receive(:new).with('Steve', '10/04/2001') { steve_birthday }
-            @subject.add_birthday('Steve', '10/04/2001')
-            expect(@subject.display_birthdays).to eq("Name: Lewis, Birthday: 18/03/1997\nName: Steve, Birthday: 10/04/2001")
+            allow(birthday_class).to receive(:new).with('Steve', '30/09/2001') { steve_birthday }
+            @subject.add_birthday('Steve', '30/09/2001')
+            expect(@subject.display_birthdays).to eq("Name: Lewis, Birthday: 18/03/1997\nName: Steve, Birthday: 30/09/2001")
         end
 
+    end
+
+    describe '#birthday_today' do
+        it "will return a birthday if the birthday is today" do
+            allow(birthday_class).to receive(:new).with('Steve', '30/09/2001') { steve_birthday }
+            allow(steve_birthday).to receive(:date) {Date.new(2001,9,30)}
+            @subject.add_birthday('Steve', '30/09/2001')
+            expect(@subject.birthday_today).to eq "It's Steve's birthday today! They are 20 years old!"
+
+        end
     end
 end

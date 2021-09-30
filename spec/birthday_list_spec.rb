@@ -3,8 +3,8 @@ require 'date'
 
 describe BirthdayList do
 
-    let(:birthday) { double :birthday, name: 'Lewis', date: '18/03/1997' } 
-    let(:steve_birthday) { double :birthday, name: 'Steve', date: '30/09/2001'   } 
+    let(:birthday) { double :birthday, name: 'Lewis', date: Date.new(1997,3,18) } 
+    let(:steve_birthday) { double :birthday, name: 'Steve', date: Date.new(2001,9,30) } 
     let(:birthday_class) { double :birthday_class }
 
     before(:each) do

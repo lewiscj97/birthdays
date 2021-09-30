@@ -1,3 +1,5 @@
+require 'birthday'
+
 describe Birthday do
   describe '#initialize' do
     it 'stores the name and birthday' do
